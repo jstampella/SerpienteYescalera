@@ -143,10 +143,32 @@ namespace guia4
                         {
                             ganadores.Add(jugadores[i].nombre);
                         }
-
                     }
                 }
             }
+        }
+
+        private void ComprobarElementos(Jugador jugador)
+        {
+            int pos = jugador.Posicion;
+            for (int i = 0; i < elementos.Length; i++)
+            {
+                int temp = elementos[i].Evaluar(jugador);
+                if (pos != temp)
+                {
+                    jugador.ModificarPosicion(elementos[i].Tipo, temp);
+                    break;
+                }
+            }
+            
+        }
+        public Jugador[] Jugadores
+        {
+            get { return jugadores; }
+        }
+        public int Ganadores
+        {
+            get { return ganadores.Count; }
         }
 
         public string Ganador(int pos)
@@ -160,11 +182,14 @@ namespace guia4
             for (int i = 0; i < jugadores.Length; i++)
             {
                 if(jugadores[i].ElementoAfectado != null)
-                {
+        {
                     if (!jugadores[i].Hallegado)
                         afectados.Add(jugadores[i]);
-                }
-            }
+        }
+        public string this[int i]
+        {
+            get { return jugadores[i].nombre.ToString(); }
+        }
             Jugador[] jAfectados = (Jugador[])afectados.ToArray(typeof(Jugador));
             return jAfectados;
         }

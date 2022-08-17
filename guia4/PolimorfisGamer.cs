@@ -140,12 +140,12 @@ namespace guia4
             foreach (Control item in tablero2.Controls)
             {
                 if (item is Panel panel)
-                {
+                    {
                     panel.Size = new Size(cuadrado.X -5, cuadrado.Y - 5);
                     tablero2.Controls.SetChildIndex(panel, index + 1);
                     int index2 = 0;
                     foreach (Control item2 in tablero2.Controls)
-                    {
+                        {
                         if(item != item2 && item.Location == item2.Location)
                         {
                             index2++;
@@ -155,6 +155,7 @@ namespace guia4
                             item2.Size = new Size(cuadrado.X - (6* index2), cuadrado.Y - (6* index2));
                         }
                     }
+                    
                 }
                 index++;
             }
